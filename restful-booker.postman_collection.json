@@ -1,7 +1,7 @@
 {
   "info": {
-    "name": "Restful Booker QA",
-    "description": "Automated positive and negative checks for the endpoints in the test assignment. Run folders in order. Requests only modify bookings created by this collection.",
+    "name": "Restful Booker — тестирование API",
+    "description": "Позитивные и негативные проверки эндпоинтов из тестового задания. Папки следует запускать по порядку. Коллекция изменяет только созданные ею тестовые бронирования и удаляет их после проверки.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
@@ -51,10 +51,10 @@
   ],
   "item": [
     {
-      "name": "01 Auth",
+      "name": "01 Авторизация",
       "item": [
         {
-          "name": "AUTH-01 Valid credentials",
+          "name": "AUTH-01 Валидные учётные данные",
           "request": {
             "method": "POST",
             "header": [
@@ -101,7 +101,7 @@
           ]
         },
         {
-          "name": "AUTH-02 Invalid password",
+          "name": "AUTH-02 Неверный пароль",
           "request": {
             "method": "POST",
             "header": [
@@ -148,7 +148,7 @@
           ]
         },
         {
-          "name": "AUTH-03 Missing password",
+          "name": "AUTH-03 Отсутствует пароль",
           "request": {
             "method": "POST",
             "header": [
@@ -197,10 +197,10 @@
       ]
     },
     {
-      "name": "02 Create",
+      "name": "02 Создание бронирования",
       "item": [
         {
-          "name": "CREATE-01 Valid JSON booking",
+          "name": "CREATE-01 Создание валидной брони",
           "request": {
             "method": "POST",
             "header": [
@@ -247,7 +247,7 @@
           ]
         },
         {
-          "name": "CREATE-04 Missing additionalneeds - RB-003",
+          "name": "CREATE-04 Нет additionalneeds — RB-003",
           "request": {
             "method": "POST",
             "header": [
@@ -294,7 +294,7 @@
           ]
         },
         {
-          "name": "CREATE-05 Reversed dates - RB-002",
+          "name": "CREATE-05 Обратный порядок дат — RB-002",
           "request": {
             "method": "POST",
             "header": [
@@ -341,7 +341,7 @@
           ]
         },
         {
-          "name": "CREATE-06 Invalid types - RB-004",
+          "name": "CREATE-06 Неверные типы — RB-004",
           "request": {
             "method": "POST",
             "header": [
@@ -389,10 +389,10 @@
       ]
     },
     {
-      "name": "03 Read and filters",
+      "name": "03 Чтение и фильтры",
       "item": [
         {
-          "name": "GET-01 Existing booking",
+          "name": "GET-01 Получение существующей брони",
           "request": {
             "method": "GET",
             "header": [
@@ -431,7 +431,7 @@
           ]
         },
         {
-          "name": "LIST-02 Exact name filter",
+          "name": "LIST-02 Точный фильтр по имени",
           "request": {
             "method": "GET",
             "header": [
@@ -478,7 +478,7 @@
           ]
         },
         {
-          "name": "LIST-03 Exact date filter - RB-001",
+          "name": "LIST-03 Точный фильтр по датам — RB-001",
           "request": {
             "method": "GET",
             "header": [
@@ -525,7 +525,7 @@
           ]
         },
         {
-          "name": "GET-02 Unknown ID",
+          "name": "GET-02 Несуществующий ID",
           "request": {
             "method": "GET",
             "header": [
@@ -565,10 +565,10 @@
       ]
     },
     {
-      "name": "04 Update",
+      "name": "04 Обновление",
       "item": [
         {
-          "name": "PUT-03 Without authorization",
+          "name": "PUT-03 Обновление без авторизации",
           "request": {
             "method": "PUT",
             "header": [
@@ -615,7 +615,7 @@
           ]
         },
         {
-          "name": "PUT-01 Full update",
+          "name": "PUT-01 Полное обновление",
           "request": {
             "method": "PUT",
             "header": [
@@ -667,7 +667,7 @@
           ]
         },
         {
-          "name": "PATCH-03 Without authorization",
+          "name": "PATCH-03 Частичное обновление без авторизации",
           "request": {
             "method": "PATCH",
             "header": [
@@ -714,7 +714,7 @@
           ]
         },
         {
-          "name": "PATCH-01 Partial update",
+          "name": "PATCH-01 Частичное обновление",
           "request": {
             "method": "PATCH",
             "header": [
@@ -768,10 +768,10 @@
       ]
     },
     {
-      "name": "05 Delete and health",
+      "name": "05 Удаление и доступность",
       "item": [
         {
-          "name": "DELETE-01 Without authorization",
+          "name": "DELETE-01 Удаление без авторизации",
           "request": {
             "method": "DELETE",
             "header": [
@@ -809,7 +809,7 @@
           ]
         },
         {
-          "name": "DELETE-02 Authorized deletion",
+          "name": "DELETE-02 Авторизованное удаление",
           "request": {
             "method": "DELETE",
             "header": [
@@ -852,7 +852,7 @@
           ]
         },
         {
-          "name": "DELETE-03 Verify deletion",
+          "name": "DELETE-03 Проверка удаления",
           "request": {
             "method": "GET",
             "header": [
@@ -890,7 +890,7 @@
           ]
         },
         {
-          "name": "PING-01 Health check",
+          "name": "PING-01 Проверка доступности",
           "request": {
             "method": "GET",
             "header": [

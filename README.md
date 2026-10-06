@@ -1,19 +1,33 @@
-# Restful Booker API testing
+# Тестирование API Restful Booker
 
-Test artifacts for the Restful Booker assignment.
+Проект выполнен для тестового задания на позицию Manual QA Engineer. Основной акцент сделан на тест-кейсах, применении техник тест-дизайна и воспроизводимых баг-репортах. Postman-коллекция дополняет ручные проверки.
 
-## Contents
+## Состав проекта
 
-- `restful-booker.postman_collection.json` — ordered CRUD collection with assertions.
-- `test-cases.xlsx` — 33 positive, negative, and boundary test cases.
-- `bug-reports.xlsx` — four defects reproduced on 2026-10-01.
+- `test-cases.xlsx` — 37 позитивных, негативных и граничных тест-кейсов.
+- `bug-reports.xlsx` — четыре воспроизводимых дефекта с окружением, предусловиями, запросами и фактическими ответами.
+- `restful-booker.postman_collection.json` — 19 автоматизированных проверок основного CRUD-сценария.
 
-## Run
+## Покрытие
 
-Import the collection into Postman and run the collection in folder order. No environment is required: variables are stored at collection level. The collection creates its own booking, uses only that ID for update/delete checks, and deletes it at the end. The public service periodically resets data and can be slow, so an isolated transport timeout should be rerun before it is reported as a product defect.
+Проверены эндпоинты `/auth`, `/booking`, `/booking/:id` и `/ping`. В тест-кейсах используются классы эквивалентности, граничные значения, проверки обязательных полей и типов, переходы состояний, матрица доступа и сочетания фильтров.
 
-Default credentials are taken from the public API documentation. Do not commit real credentials or generated tokens.
+## Запуск Postman-коллекции
 
-## Evidence
+1. Импортировать `restful-booker.postman_collection.json` в Postman.
+2. Запустить всю коллекцию в исходном порядке папок. Отдельное окружение не требуется: переменные находятся на уровне коллекции.
+3. Первый запрос авторизации сохраняет токен. Позитивный сценарий создания сохраняет `bookingId`. Последующие запросы используют этот ID и удаляют бронь в конце.
+4. Негативные проверки, которые из-за дефектов неожиданно создают записи, отправляют фоновый запрос на их удаление.
 
-The bug reports are based on direct calls to the public service. RB-001 was reproduced twice, including after a two-second delay. The temporary valid booking used for verification was deleted after the check.
+Публичный стенд периодически сбрасывает данные и иногда отвечает медленно. Единичный сетевой тайм-аут следует перепроверить перед регистрацией дефекта.
+
+## Найденные дефекты
+
+- RB-001: фильтр по точной дате заезда не возвращает созданную бронь.
+- RB-002: дата выезда может быть раньше даты заезда.
+- RB-003: обязательное по документации поле `additionalneeds` фактически необязательно.
+- RB-004: неверные типы полей приводят к 500 Internal Server Error.
+
+## Примечания
+
+Коды 201 для `DELETE /booking/:id` и `GET /ping` выглядят нетипично для REST API, но зафиксированы в официальной документации сервиса, поэтому не зарегистрированы как дефекты. Учётные данные администратора также взяты из публичной документации. Реальные учётные данные и сгенерированные токены в репозитории не хранятся.
